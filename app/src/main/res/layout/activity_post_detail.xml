@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:background="@drawable/abc"
+    android:padding="10dp"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <include
+                android:id="@+id/post_author_layout"
+                layout="@layout/include_post_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true" />
+
+            <include
+                android:id="@+id/post_text_layout"
+                layout="@layout/include_post_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/post_author_layout"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/image_post_single"
+                android:layout_below="@+id/post_text_layout"/>
+
+            <RelativeLayout
+                android:id="@+id/comment_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_post_single"
+                android:layout_marginTop="20dp">
+
+
+                <ImageView
+                    android:id="@+id/emoji_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="4dp"
+                    android:src="@drawable/smiley_y"
+                    />
+                <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
+                    android:id="@+id/field_comment_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionSend"
+                    android:inputType="text"
+                    android:backgroundTint="#FFFFFF"
+                    android:maxLines="10"
+                    android:textColor="#FFFFFF"
+                    emojicon:emojiconSize="28sp"
+                    android:layout_toLeftOf="@+id/button_post_comment"
+                    android:layout_toRightOf="@+id/emoji_btn" />
+
+                <ImageView
+                    android:id="@+id/button_post_comment"
+                    android:layout_width="40dp"
+                    android:src="@drawable/ic_send_white_24dp"
+                    android:layout_height="40dp"
+                    android:padding="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_comments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/comment_form"
+                tools:listitem="@layout/item_comment" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
